@@ -3,6 +3,7 @@ package jpastudy.jpashop;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,6 +16,7 @@ class MemberRepositoryTest {
 
     @Test
     @Transactional // 쓸 수 있는 옵션이 많다 spring version
+    @Rollback(value = false)
     public void testMember() throws Exception {
         //given
         Member member = new Member();
