@@ -1,0 +1,4 @@
+package hellojpa
+
+class JpaMain {
+}
