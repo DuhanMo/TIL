@@ -22,9 +22,6 @@ class Order(
     var orderDate: LocalDateTime,
 
     @Enumerated(EnumType.STRING)
-    var orderStatus: OrderStatus,
-
-    @Lob
-    var description: Blob
+    var orderStatus: OrderStatus
 )
 
