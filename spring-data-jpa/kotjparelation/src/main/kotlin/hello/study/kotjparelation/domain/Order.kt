@@ -16,6 +16,10 @@ class Order(
     @JoinColumn(name = "MEMBER_ID")
     var member: Member,
 
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    var delivery: Delivery,
+
     @OneToMany(mappedBy = "order")
     var orderItems: List<OrderItem> = arrayListOf(),
 
