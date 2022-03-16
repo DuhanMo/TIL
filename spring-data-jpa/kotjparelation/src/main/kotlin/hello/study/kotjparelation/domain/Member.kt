@@ -9,8 +9,13 @@ class Member(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="MEMBER_ID")
     var id: Long? = null,
+
     @Column(name = "USERSNAME", nullable = true, unique = true)
     var name: String,
+
     var street: String,
-    var zipcode: String
+    var zipcode: String,
+
+    @OneToMany(mappedBy = "member")
+    var orders: List<Order> = arrayListOf()
 )
