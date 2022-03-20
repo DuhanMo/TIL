@@ -1,22 +1,18 @@
 package hello.study.kotjparelation.domain
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.ManyToMany
+import javax.persistence.*
 
 @Entity
-class Item(
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+open class Item : BaseEntity() {
     @Id
     @GeneratedValue
     @Column(name = "ITEM_ID")
-    var id: Long,
-
-    var name: String,
-    var price: Int,
-    var stockQuantity: Int,
+    var id: Long? = null
+    var name: String? = null
+    var price: Int = 0
+    var stockQuantity: Int = 0
 
     @ManyToMany(mappedBy = "items")
-    var categories: List<Category> = arrayListOf()
-)
+    var categories: MutableList<Category> = mutableListOf()
+}

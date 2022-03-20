@@ -19,4 +19,4 @@ class OrderItem(
 
     var orderPrice: Int,
     var count: Int
-)
+) : BaseEntity() {}

@@ -1,6 +1,5 @@
 package hello.study.kotjparelation.domain
 
-import java.sql.Blob
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -21,11 +20,11 @@ class Order(
     var delivery: Delivery,
 
     @OneToMany(mappedBy = "order")
-    var orderItems: List<OrderItem> = arrayListOf(),
+    var orderItems: List<OrderItem> = mutableListOf(),
 
     var orderDate: LocalDateTime,
 
     @Enumerated(EnumType.STRING)
     var orderStatus: OrderStatus
-)
+) : BaseEntity() {}
 

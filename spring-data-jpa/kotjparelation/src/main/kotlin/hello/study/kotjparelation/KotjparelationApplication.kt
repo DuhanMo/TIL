@@ -8,5 +8,4 @@ class KotjparelationApplication
 
 fun main(args: Array<String>) {
     runApplication<KotjparelationApplication>(*args)
-
 }

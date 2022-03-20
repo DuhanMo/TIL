@@ -14,4 +14,4 @@ class Delivery(
     var street: String,
     var zipcode: String,
     var status: DeliveryStatus,
-) {}
+) : BaseEntity() {}

@@ -7,7 +7,7 @@ import javax.persistence.*
 class Member(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="MEMBER_ID")
+    @Column(name = "MEMBER_ID")
     var id: Long? = null,
 
     @Column(name = "USERSNAME", nullable = true, unique = true)
@@ -17,5 +17,5 @@ class Member(
     var zipcode: String,
 
     @OneToMany(mappedBy = "member")
-    var orders: List<Order> = arrayListOf()
-)
+    var orders: List<Order> = mutableListOf()
+) : BaseEntity() {}
