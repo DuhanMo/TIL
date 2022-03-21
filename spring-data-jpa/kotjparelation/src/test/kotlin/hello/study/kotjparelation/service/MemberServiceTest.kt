@@ -34,8 +34,6 @@ internal class MemberServiceTest(
         println("=================")
         val referencedMember = entityManager.getReference(Member::class.java, member.id)
         println("referencedMember.javaClass" + referencedMember.javaClass)
-//        println(referencedMember.team?.javaClass)
         println("=================")
-
     }
 }

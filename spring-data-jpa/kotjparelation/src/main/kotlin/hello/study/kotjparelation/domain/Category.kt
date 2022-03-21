@@ -1,6 +1,7 @@
 package hello.study.kotjparelation.domain
 
 import javax.persistence.*
+import javax.persistence.FetchType.LAZY
 
 @Entity
 class Category(
@@ -10,7 +11,7 @@ class Category(
 
     var name: String,
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PARENT_ID")
     var parent: Category,
 
