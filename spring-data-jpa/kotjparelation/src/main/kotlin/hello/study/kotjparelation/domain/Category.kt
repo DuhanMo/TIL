@@ -15,7 +15,7 @@ class Category(
     var parent: Category,
 
     @OneToMany(mappedBy = "parent")
-    var child: List<Category> = mutableListOf(),
+    var child: MutableList<Category> = mutableListOf(),
 
     @ManyToMany
     @JoinTable(

@@ -17,5 +17,9 @@ class Member(
     var zipcode: String,
 
     @OneToMany(mappedBy = "member")
-    var orders: List<Order> = mutableListOf()
+    var orders: MutableList<Order> = mutableListOf(),
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "TEAM_ID")
+    var team: Team? = null
 ) : BaseEntity() {}

@@ -20,7 +20,7 @@ class Order(
     var delivery: Delivery,
 
     @OneToMany(mappedBy = "order")
-    var orderItems: List<OrderItem> = mutableListOf(),
+    var orderItems: MutableList<OrderItem> = mutableListOf(),
 
     var orderDate: LocalDateTime,
 

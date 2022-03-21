@@ -15,7 +15,7 @@ class MemberRepository(val em: EntityManager) {
     }
 
     fun findByName(name: String): List<Member> {
-        return em.createQuery("select m from Member m where m.name=:name",Member::class.java)
+        return em.createQuery("select m from Member m where m.name=:name", Member::class.java)
             .setParameter("name", name)
             .resultList
     }

@@ -5,6 +5,6 @@ import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
 abstract class BaseEntity {
-    var createdDate: LocalDateTime = LocalDateTime.now()
-    var modifiedDate: LocalDateTime = LocalDateTime.now()
+    open var createdDate: LocalDateTime = LocalDateTime.now()
+    open var modifiedDate: LocalDateTime = LocalDateTime.now()
 }
