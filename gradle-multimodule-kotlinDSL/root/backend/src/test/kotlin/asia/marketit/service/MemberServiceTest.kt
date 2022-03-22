@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test
 import org.slf4j.Logger
 import org.springframework.data.repository.findByIdOrNull
 
-internal class MemberServiceTest {
+internal class MemberServiceTest () {
     private val logger: Logger = mockk()
     private val memberRepository: MemberRepository = mockk()
-    private val memberService = MemberService(memberRepository = memberRepository, logger = logger)
+    private val memberService = MemberService(memberRepository = memberRepository)
     lateinit var member: Member
 
     @BeforeEach

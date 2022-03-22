@@ -2,7 +2,7 @@ plugins {
     id("org.springframework.boot")
     kotlin("jvm")
     kotlin("plugin.spring")
-    kotlin("plugin.jpa") version "1.6.10"
+    kotlin("plugin.jpa")
     kotlin("plugin.allopen")
 }
 

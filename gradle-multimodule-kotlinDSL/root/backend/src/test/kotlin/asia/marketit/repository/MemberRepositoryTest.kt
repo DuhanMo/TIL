@@ -10,12 +10,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager
 import org.springframework.data.repository.findByIdOrNull
 
 @DataJpaTest
-internal class MemberRepositoryTest {
+internal class MemberRepositoryTest(
     @Autowired
-    lateinit var entityManager: TestEntityManager
-
+    private val entityManager: TestEntityManager,
     @Autowired
-    lateinit var memberRepository: MemberRepository
+    private val memberRepository: MemberRepository
+) {
 
     @Test
     @DisplayName("멤버 저장 성공")
