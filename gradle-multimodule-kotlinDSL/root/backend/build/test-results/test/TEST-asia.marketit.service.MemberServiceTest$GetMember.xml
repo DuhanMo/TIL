@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="멤버 가져오기 테스트" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-22T07:43:46" hostname="Ethanui-MacBookPro.local" time="1.327">
+  <properties/>
+  <testcase name="성공" classname="asia.marketit.service.MemberServiceTest$GetMember" time="1.327"/>
+  <system-out><![CDATA[16:43:46.136 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Logger name=#1
+16:43:46.685 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for MemberRepository name=#2
+setup
+16:43:48.075 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Optional name=child of #2#3
+16:43:48.079 [Test worker] DEBUG io.mockk.impl.instantiation.AbstractMockFactory - Creating mockk for Member name=child^2 of #2#3#4
+16:43:48.090 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering Optional(child of #2#3) on MemberRepository(#2).findById(1)
+16:43:48.091 [Test worker] DEBUG io.mockk.impl.recording.states.AnsweringState - Answering asia.marketit.domain.Member@7d2998d8 on Optional(child of #2#3).orElse(null)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
