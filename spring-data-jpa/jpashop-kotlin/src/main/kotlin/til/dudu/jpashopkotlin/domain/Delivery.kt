@@ -7,10 +7,10 @@ class Delivery(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delivery_id")
-    val id: Long?,
+    val id: Long?=null,
 
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    var order: Order,
+    var order: Order?=null,
 
     @Embedded
     val address: Address?,

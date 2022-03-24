@@ -25,5 +25,6 @@ class OrderItem(
         item.addStock(this.count)
     }
 
+    @Transient
     val totalPrice = this.orderPrice * this.count
 }

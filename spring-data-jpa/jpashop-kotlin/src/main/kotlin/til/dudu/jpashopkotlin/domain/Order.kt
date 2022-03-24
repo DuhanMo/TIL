@@ -14,17 +14,17 @@ class Order(
     @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
     val orderItems: MutableList<OrderItem> = mutableListOf(),
 
-    val orderDate: LocalDateTime,
+    val orderDate: LocalDateTime = LocalDateTime.now(),
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
-    var member: Member?,
+    var member: Member? = null,
 
     @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    var delivery: Delivery?,
+    var delivery: Delivery? = null,
 
     @Enumerated(value = EnumType.STRING)
-    var status: OrderStatus
+    var status: OrderStatus? = null
 ) {
     fun linkMember(member: Member) {
         this.member = member
@@ -52,4 +52,17 @@ class Order(
     }
 
     val totalPrice = orderItems.sumOf { it.totalPrice }
+
+    companion object {
+        fun createOrder(member: Member, delivery: Delivery, vararg orderItem: OrderItem): Order {
+            val order = Order()
+            order.linkMember(member)
+            order.linkDelivery(delivery)
+            for (orderItem in orderItem) {
+                order.addOrderItem(orderItem)
+            }
+            order.status = OrderStatus.ORDER
+            return order
+        }
+    }
 }
