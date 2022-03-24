@@ -1,53 +1,37 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.6.4"
-	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.6.10"
-	kotlin("plugin.spring") version "1.6.10"
-	kotlin("plugin.jpa") version "1.6.10"
-	kotlin("plugin.allopen") version "1.6.10"
-	kotlin("plugin.noarg") version "1.6.10"
+    id("org.springframework.boot") version "2.6.4" apply false
+    id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
+    kotlin("jvm") version "1.6.10" apply false
+    kotlin("plugin.spring") version "1.6.10" apply false
+    kotlin("plugin.jpa") version "1.6.10" apply false
+    kotlin("plugin.allopen") version "1.6.10" apply false
+    kotlin("plugin.noarg") version "1.6.10" apply false
 }
 
-group = "til.dudu"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
 
-repositories {
-	mavenCentral()
-}
+allprojects {
+    group = "til.dudu"
+//	version = "0.0.1-SNAPSHOT" /*배포 단위별로 관리하는 것이 좋다*/
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "11"
+        }
+    }
 
-allOpen {
-	annotation("javax.persistence.Entity")
-	annotation("javax.persistence.Embeddable")
-	annotation("javax.persistence.MappedSuperclass")
-}
-noArg {
-	annotation("javax.persistence.Entity")
-	annotation("javax.persistence.Embeddable")
-	annotation("javax.persistence.MappedSuperclass")
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
-dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("mysql:mysql-connector-java")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	runtimeOnly("com.h2database:h2")
+subprojects { /* 각 모듈에 있는 repositoryes 는 삭제*/
+    repositories {
+        mavenCentral()
+    }
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
-	}
-}
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
+
+
