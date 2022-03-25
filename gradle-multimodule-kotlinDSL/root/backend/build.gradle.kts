@@ -13,7 +13,7 @@ allOpen {
 }
 
 dependencies {
-    implementation(project(":test-utils"))
+    implementation(project(":module-common"))
 
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib-jdk8"))
