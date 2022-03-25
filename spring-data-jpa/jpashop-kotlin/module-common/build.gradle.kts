@@ -8,6 +8,8 @@ plugins {
     kotlin("plugin.noarg")
 }
 
+version = "1.0.2-SNAPSHOT" /*배포 단위별로 관리하는 것이 좋다*/
+
 allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.Embeddable")
