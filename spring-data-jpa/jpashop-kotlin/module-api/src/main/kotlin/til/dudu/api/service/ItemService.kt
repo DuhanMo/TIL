@@ -28,7 +28,7 @@ class ItemService(
         }
     }
 
-    fun findItemsInMainBranch(): MutableIterable<Item> {
+    fun findItemsInMainBranchTwoCommit(): MutableIterable<Item> {
         return itemRepository.findAll()
     }
 
