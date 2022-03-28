@@ -35,4 +35,8 @@ class ItemService(
     fun findOne(itemId: Long): Item? {
         return itemRepository.findByIdOrNull(itemId)
     }
+
+    fun mainBranchMethodAdded() {
+        println("메인브랜치에서 함수를 생성했습니다")
+    }
 }
