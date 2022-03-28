@@ -28,7 +28,7 @@ class ItemService(
         }
     }
 
-    fun findItems(): MutableIterable<Item> {
+    fun findItemsInMainBranch(): MutableIterable<Item> {
         return itemRepository.findAll()
     }
 
