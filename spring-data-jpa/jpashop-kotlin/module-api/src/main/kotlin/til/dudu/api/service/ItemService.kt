@@ -39,4 +39,8 @@ class ItemService(
     fun methodDeleteAndAddedInMainBranch() {
         println("두개의 메서드를 삭제하고 메인브랜치에서 메서드를 추가합니다 -> 충돌유발을 위함")
     }
+
+    fun methodAddedInMainBranch() {
+
+    }
 }
