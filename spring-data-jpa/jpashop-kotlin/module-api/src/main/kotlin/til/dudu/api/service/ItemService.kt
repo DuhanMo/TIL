@@ -45,4 +45,8 @@ class ItemService(
     fun methodDeleteCommit() {
         println("두개의 메서드를 삭제했습니다.")
     }
+
+    fun methodAddedByTestBranch() {
+        println("커밋을 한개 더 쌓습니다.")
+    }
 }
