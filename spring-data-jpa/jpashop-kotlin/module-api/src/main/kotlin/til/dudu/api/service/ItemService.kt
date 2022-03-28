@@ -36,11 +36,7 @@ class ItemService(
         return itemRepository.findByIdOrNull(itemId)
     }
 
-    fun otherLineAdded() {
-        println("오토머징 동작 여부 확인")
-    }
-
-    fun mainBranchMethodAdded() {
-        println("메인브랜치에서 함수를 생성했습니다")
+    fun methodDeleteAndAddedInMainBranch() {
+        println("두개의 메서드를 삭제하고 메인브랜치에서 메서드를 추가합니다 -> 충돌유발을 위함")
     }
 }
