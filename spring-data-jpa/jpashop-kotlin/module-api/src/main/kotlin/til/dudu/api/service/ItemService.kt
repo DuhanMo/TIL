@@ -36,6 +36,10 @@ class ItemService(
         return itemRepository.findByIdOrNull(itemId)
     }
 
+    fun otherLineAdded() {
+        println("오토머징 동작 여부 확인")
+    }
+
     fun mainBranchMethodAdded() {
         println("메인브랜치에서 함수를 생성했습니다")
     }
