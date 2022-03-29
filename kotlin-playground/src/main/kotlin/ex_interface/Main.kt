@@ -1,4 +1,19 @@
 package ex_interface
 
-class Main {
+interface Printable {
+    fun print(): Unit
+}
+
+class AAA : Printable {
+    override fun print() {
+        println("Hello")
+    }
+}
+
+fun print(anything: Printable) {
+    anything.print()
+}
+
+fun main() {
+    print(AAA())
 }
