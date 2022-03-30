@@ -2,6 +2,11 @@ spring:
   profiles:
     active: local
 
+#지정한 Batch Job만 실행되도록
+#Program Arguments로 job.name이 넘어오면 해당값과 일치하는 Job만 실행한다는 뜻..
+#아무런 Arguments도 넘어오지 않는다면 배치를 실행시키지 않는다.
+spring.batch.job.names: ${job.name:NONE}
+
 ---
 spring:
   profiles: local
