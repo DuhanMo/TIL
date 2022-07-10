@@ -1,0 +1,53 @@
+package sample;
+
+import java.util.Optional;
+
+public class OnlineClass {
+
+    private Integer id;
+
+    private String title;
+
+    private boolean closed;
+
+    private Progress progress;
+//    private Optional<Progress> progress; 인스턴스의 필드로서 Optional을 사용하면 안된다.
+
+    public OnlineClass(Integer id, String title, boolean closed) {
+        this.id = id;
+        this.title = title;
+        this.closed = closed;
+    }
+
+    public Optional<Progress> getProgress() {
+        return Optional.ofNullable(progress);
+    }
+
+    public void setProgress(Progress progress) {
+        this.progress = progress;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    public void setClosed(boolean closed) {
+        this.closed = closed;
+    }
+}
