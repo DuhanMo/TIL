@@ -1,10 +1,9 @@
 package sample.ch04completable_future;
 
-import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-public class Main {
+public class CompletableFuture1 {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 //        CompletableFuture<String> completedFuture = CompletableFuture.completedFuture("completedFuture()");
 //        System.out.println(completedFuture.get());
