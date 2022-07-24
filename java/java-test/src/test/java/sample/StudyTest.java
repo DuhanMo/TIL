@@ -1,15 +1,24 @@
 package sample;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
 
     @Test
+    @EnabledOnOs({OS.MAC, OS.LINUX})
+    @EnabledIfEnvironmentVariable(named = "TEST_ENV", matches = "LOCAL")
     @DisplayName("스터디 만들기")
     void create_new_study() {
         Study study = new Study(10);
@@ -31,6 +40,7 @@ class StudyTest {
     }
 
     @Test
+    @DisabledOnOs(OS.MAC)
     @DisplayName("스터디 다시 만들기")
     void create_new_study_again() {
         System.out.println("create again");
@@ -51,6 +61,27 @@ class StudyTest {
         // 트랜잭션 테스트는 롤백을 기준으로 한다.
         // 하지만 assertTimeoutPreemptively 는 코드블럭을 별도 스레드에서 진행하기 때문에
         // 트랜잭션 (Thread Local 전략) 을 사용하는 테스트에서는 예상치못하게 롤백이 안되고 DB에 반영될 수가 있다.
+    }
+
+    // 조건에 따라 테스트를 다르게 실행해야 한다면
+    // ex: OS, JAVA version, 환경변수,..
+    @Test
+    void conditional_test() {
+        String test_env = System.getenv("TEST_ENV");
+        System.out.println(test_env);
+        assumeTrue("LOCAL".equalsIgnoreCase(System.getenv("TEST_ENV"))); // assumeTrue 구문이 True일 경우에만 이 후 테스트코드를 실행한다.
+
+        assumingThat("Local".equalsIgnoreCase(test_env), () -> {
+            System.out.println("local");
+            Study actual = new Study(10);
+            assertThat(actual.getLimit()).isGreaterThan(0);
+        });
+
+        assumingThat("duhan".equalsIgnoreCase(test_env), () -> {
+            System.out.println("duhan");
+            Study actual = new Study(10);
+            assertThat(actual.getLimit()).isGreaterThan(0);
+        });
     }
 
     @BeforeAll // 모든 테스트 실행 전 딱 한번
